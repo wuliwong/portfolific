@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'currencies/index'
   get 'countries/index'
   get 'portfolio/index'
   root 'home#landing'

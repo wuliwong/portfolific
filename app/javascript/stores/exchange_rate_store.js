@@ -13,7 +13,7 @@ class ExchangeRateStore {
   fetchExchangeRates(params) {
     return axios({
       method: 'get',
-      url: `http://openexchangerates.org/api/latest.json?app_id=925b5c034e404a678862b0ea49a2fab6`,
+      url: '/exchange_rates',
       params: params
     }).then(action((response) => {
       this.exchangeRates = response.data.rates;

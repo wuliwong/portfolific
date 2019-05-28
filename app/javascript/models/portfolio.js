@@ -39,7 +39,11 @@ export default class Portfolio {
 
   nativeCurrencySymbol() {
     const country = countryStore.findByCountryCode(this.countryCode);
-    console.log(country);
-    return currencyStore.currencySymbolForCode(country.currencyCode);
+
+    if (country == undefined) {
+      return null;
+    } else {
+      return currencyStore.currencySymbolForCode(country.currencyCode);
+    }
   }
 }

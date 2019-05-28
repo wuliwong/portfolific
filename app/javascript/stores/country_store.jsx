@@ -9,6 +9,10 @@ class CountryStore {
   constructor() {
   }
 
+  findByCountryCode(countryCode) {
+    return _.filter(this.countries, (country) => { return country.code == countryCode })[0]; 
+  }
+
   @action
   fetchCountries(params) {
     return axios({

@@ -3,10 +3,9 @@ import _ from 'lodash';
 import axios from 'axios';
 
 class ExchangeRateStore {
-  @observable exchangeRates = {};
+  @observable exchangeRates;
 
   constructor() {
-    this.fetchExchangeRates()
   }
 
   @action

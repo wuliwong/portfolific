@@ -4,6 +4,8 @@ import countryStore from '../stores/country_store';
 import currencyStore from '../stores/currency_store';
 import portfolioStore from '../stores/portfolio_store';
 import exchangeRateStore from '../stores/exchange_rate_store';
+import { round } from '../utils/formatter';
+
 @observer
 class Landing extends React.Component {
   constructor(props) {
@@ -37,19 +39,16 @@ class Landing extends React.Component {
 
   portfolios() {
     return _.map(portfolioStore.portfolios, (portfolio) => {
-      return <p key={`portfolio-${portfolio.slug}`}>{portfolio.name}</p>;
+      return <p key={`portfolio-${portfolio.slug}`}>{portfolio.name} : { `${portfolio.nativeCurrencySymbol()} ${Number(round(portfolio.totalValueInNativeCurrency())).toLocaleString()}` }</p>;
     });
   }
 
   render() {
-    if (countryStore.countries == [] || currencyStore.currencies == [] || exchangeRateStore.exchangeRates == {} || portfolioStore.portfolios == []) {
+    if (countryStore.countries == [] || currencyStore.currencies == [] || exchangeRateStore.exchangeRates == undefined || portfolioStore.portfolios == []) {
       return <h1>Loading...</h1>;
-    } else {
+    } else {ex
       return (
         <div>
-          <div><h2>Countries</h2>{ this.countries() }</div>
-          <div><h2>Currencies</h2>{ this.currencies() }</div>
-          <div><h2>Rates</h2>{ this.exchangeRates() }</div>
           <div><h2>Portfolios</h2>{ this.portfolios() }</div>
         </div>
         )

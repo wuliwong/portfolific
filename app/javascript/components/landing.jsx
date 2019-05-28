@@ -5,6 +5,7 @@ import currencyStore from '../stores/currency_store';
 import portfolioStore from '../stores/portfolio_store';
 import exchangeRateStore from '../stores/exchange_rate_store';
 import { round } from '../utils/formatter';
+import { Divider } from 'muicss/react';
 
 @observer
 class Landing extends React.Component {
@@ -19,27 +20,13 @@ class Landing extends React.Component {
     portfolioStore.fetchPortfolios();
   }
 
-  countries() {
-    return _.map(countryStore.countries, (country) => {
-      return <p key={`country-${country.code}`}>{country.name}</p>;
-    });
-  }
-
-  currencies() {
-    return _.map(currencyStore.currencies, (currency) => {
-      return <p key={`currency-${currency.isoCode}-${currency.symbol}`}>{currency.name}</p>;
-    });
-  }
-
-  exchangeRates() {
-    return _.map(exchangeRateStore.exchangeRates, (k,v) => {
-      return <p key={`rate-${v}`}>{v}: {k}</p>;
-    });
+  listHeaders() {
+    return <p key="list-headers">Name</p>
   }
 
   portfolios() {
     return _.map(portfolioStore.portfolios, (portfolio) => {
-      return <p key={`portfolio-${portfolio.slug}`}>{portfolio.name} : { `${portfolio.nativeCurrencySymbol()} ${Number(round(portfolio.totalValueInNativeCurrency())).toLocaleString()}` }</p>;
+      return <tr key={`portfolio-${portfolio.slug}`}><td>{portfolio.name}</td><td>{`${portfolio.nativeCurrencySymbol()} ${Number(round(portfolio.totalValueInNativeCurrency())).toLocaleString()}`}</td></tr>;
     });
   }
 
@@ -49,7 +36,20 @@ class Landing extends React.Component {
     } else {
       return (
         <div>
-          <div><h2>Portfolios</h2>{ this.portfolios() }</div>
+          <div>
+            <h4 className="mui--text-center">Portfolio List in Native Currency</h4>
+            <table className="mui-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Total Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                { this.portfolios() }
+              </tbody>
+            </table>
+          </div>
         </div>
         )
     }

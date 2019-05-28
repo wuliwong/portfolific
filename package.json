@@ -2,9 +2,11 @@
   "name": "portfolific",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-decorators": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
     "@rails/webpacker": "^4.0.3",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "mobx": "^5.9.4",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"

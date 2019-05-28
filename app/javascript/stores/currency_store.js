@@ -9,6 +9,16 @@ class CurrencyStore {
   constructor() {
   }
 
+  currencySymbolForCode(currencyCode) {
+    const currency =  _.filter(this.currencies, (currency) => { return currency.isoCode == currencyCode })[0];
+
+    if (currency == undefined) {
+      return null
+    } else {
+      return currency.symbol;
+    }
+  }
+
   @action
   fetchCurrencies(params) {
     return axios({

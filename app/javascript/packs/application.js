@@ -14,5 +14,14 @@
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { configure } from 'mobx';
 
-console.log('Hello World from Webpacker')
+import Main from '../components/main'
+
+configure({ enforceActions: "observed" }) // don't allow state modifications outside actions
+
+document.addEventListener('DOMContentLoaded', () => {
+  ReactDOM.render(<Main />, document.getElementById('app'));
+})

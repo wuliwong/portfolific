@@ -46,7 +46,7 @@ class Landing extends React.Component {
   render() {
     if (countryStore.countries == [] || currencyStore.currencies == [] || exchangeRateStore.exchangeRates == undefined || portfolioStore.portfolios == []) {
       return <h1>Loading...</h1>;
-    } else {ex
+    } else {
       return (
         <div>
           <div><h2>Portfolios</h2>{ this.portfolios() }</div>

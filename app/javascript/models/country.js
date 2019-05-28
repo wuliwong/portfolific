@@ -6,7 +6,6 @@ export default class Country {
   @observable currencyCode;
 
   constructor(data) {
-    console.log(data);
     this.code = data.code;
     this.name = data.name;
     this.currencyCode = data.currencyCode;

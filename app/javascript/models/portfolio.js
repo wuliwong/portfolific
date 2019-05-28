@@ -23,14 +23,28 @@ export default class Portfolio {
     }
   }
 
+  totalValueInUSD() {
+    if (exchangeRateStore.exchangeRates == undefined) {
+      return 0;
+    } else {
+      let totalValue = 0;
+
+      _.each(this.assets, (asset) => {
+        totalValue += parseFloat(asset.amount)/exchangeRateStore.exchangeRates[asset.currencyCode]
+      });
+
+      return totalValue;
+    }
+  }
+
   totalValueForCountry(countryCode) {
-    let totalValue = 0;
+    const country = countryStore.findByCountryCode(this.countryCode);
 
-    _.each(this.assets, (asset) => {
-      totalValue += exchangeRateStore.exchangeRates[asset.currencyCode]*parseFloat(asset.amount)
-    });
-
-    return totalValue;
+    if (country == undefined) {
+      return 0;
+    } else {
+      return exchangeRateStore.exchangeRates[country.currencyCode]*this.totalValueInUSD();
+    }
   }
 
   totalValueInNativeCurrency() {

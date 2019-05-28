@@ -18,6 +18,7 @@ import {
 } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import Landing from './landing';
+import { Container, Appbar } from 'muicss/react';
 
 @observer
 class Main extends React.Component {
@@ -34,12 +35,23 @@ class Main extends React.Component {
   }
 
   render() {
+    let s1 = {verticalAlign: 'middle'};
+
     return (
-      <div id="main">
+      <Container>
+        <Appbar>
+          <table>
+            <tbody>
+             <tr style={s1}>
+               <td className="mui--appbar-height"><h3>Portfolific</h3></td>
+             </tr>
+           </tbody>
+         </table>
+        </Appbar>
         <Router>
           { this.routes() }
         </Router>
-      </div>
+      </Container>
     );
   }
 }

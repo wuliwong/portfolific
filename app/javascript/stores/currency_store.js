@@ -13,7 +13,7 @@ class CurrencyStore {
     const currency =  _.filter(this.currencies, (currency) => { return currency.isoCode == currencyCode })[0];
 
     if (currency == undefined) {
-      return null
+      return null;
     } else {
       return currency.symbol;
     }

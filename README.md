@@ -1,24 +1,5 @@
-# README
+# Portfolific
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Lists portfolios with on-the-fly calculations of total value in the native currency of the portfolio holder.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+A live version is here: http://www.portfolific.com
